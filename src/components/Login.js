@@ -6,11 +6,11 @@ function Login() {
 
   function handleFormSubmit(event){
     event.preventDefault();
-    const userData = {
-      user: data.username,
-      password: data.password
-    };
     console.log(data);
+  }
+
+  function handleInputChange(text, name){
+    setData({...data, [name]: text})
   }
 
   return(
@@ -18,10 +18,10 @@ function Login() {
     <h1>Login Form</h1>
     <form onSubmit={handleFormSubmit}>
       <label>Username:
-        <input type="text" value={data.username} onChange={(e) => setData({...data, username: e.target.value})}/> 
+        <input type="text" value={data.username} onChange={(e) => handleInputChange(e.target.value, "username")}/> 
       </label>
       <label>Password:
-        <input type="password" value={data.password} onChange={(e) => setData({...data, password: e.target.value})}/> 
+        <input type="password" value={data.password} onChange={(e) => handleInputChange(e.target.value, "password")}/> 
       </label>
       <button>Login</button>
     </form>
